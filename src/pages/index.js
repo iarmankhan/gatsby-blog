@@ -1,12 +1,17 @@
 import React from 'react';
-import {useSiteMetadata} from '../hooks/useSiteMetadata'
+import {useSiteMetadata} from '../hooks/useSiteMetadata';
+import styled from 'styled-components';
+
+const StyledH1 = styled.h1`
+    color: rebeccapurple;
+`;
 
 const App = () => {
     const { title, description } = useSiteMetadata();
     return (
         <>
-        <h1>{title}</h1>
-        <p>{description}</p>
+            <StyledH1>{title}</StyledH1>
+            <p>{description}</p>
         </>
     );
 };
