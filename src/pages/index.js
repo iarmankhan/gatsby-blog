@@ -3,25 +3,35 @@ import {
     Layout
 } from '../components/Layout';
 import {
-    graphql
+    graphql, Link
 } from 'gatsby';
+import styled from 'styled-components'
+
+const IndexWrapper = styled.main``;
+
+const PostWrapper = styled.div``;
+
 
 const App = ({data}) => {
 
     return ( 
-        <>
         <Layout>
-        {
-            data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
-                <>
-                    <h1>{frontmatter.title}</h1>
-                    <p>{frontmatter.date}</p>
-                    <p>{excerpt}</p>
-                </>
-            ))
-        }
+            <IndexWrapper>
+            {
+                data.allMdx.nodes.map(
+                    ({ id, excerpt, frontmatter, fields }) => (
+                        <PostWrapper key={id}>
+                            <Link to={fields.slug}>
+                                <h1>{frontmatter.title}</h1>
+                                <p>{frontmatter.date}</p>
+                                <p>{excerpt}</p>
+                            </Link>
+                        </PostWrapper>
+                    )
+                )
+            }
+        </IndexWrapper>
         </Layout>
-        </>
     );
 };
 
@@ -39,6 +49,9 @@ export const query = graphql `
               frontmatter {
                 title
                 date
+              }
+              fields{
+                  slug
               }
             }
         }      
