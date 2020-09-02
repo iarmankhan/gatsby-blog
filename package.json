@@ -18,8 +18,10 @@
     "gatsby-plugin-mdx": "^1.2.37",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.27",
+    "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-live": "^2.2.2",
     "styled-components": "^5.1.1"
   }
 }
